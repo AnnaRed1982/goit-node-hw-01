@@ -4,27 +4,22 @@ const path = require("path");
 const contactsPath = path.join(__dirname, "./db/contacts.json");
 console.log(contactsPath);
 
-/*
- * Раскомментируй и запиши значение
- * const contactsPath = ;
- */
-
-// TODO: задокументировать каждую функцию
 async function listContacts() {
-  const data = await fs.readFile(contactsPath, "utf-8");
+  const data = await fs.readFile(contactsPath);
   return JSON.parse(data);
 }
 
-function getContactById(contactId) {
+async function getContactById(contactId) {
+  const contacts = await listContacts();
+  const result = contacts.find((item) => item.id === contactId);
+  return result || null;
+}
+
+async function addContact(name, email, phone) {
   // ...твой код
 }
 
-function removeContact(contactId) {
+async function removeContact(contactId) {
   // ...твой код
 }
-
-function addContact(name, email, phone) {
-  // ...твой код
-}
-
 module.exports = { listContacts, getContactById, removeContact, addContact };
