@@ -15,7 +15,8 @@ async function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case "add":
-      // ... name email phone
+      const newContact = await contacts.addContact({ name, email, phone });
+      console.log(newContact);
       break;
 
     case "remove":
@@ -28,8 +29,8 @@ async function invokeAction({ action, id, name, email, phone }) {
 }
 
 // invokeAction(argv);
-invokeAction({ action: "list" });
-invokeAction({ action: "get", id: "05olLMgyVQdWRwgKfg5J6" });
+// invokeAction({ action: "list" });
+// invokeAction({ action: "get", id: "05olLMgyVQdWRwgKfg5J6" });
 // invokeAction({
 //   action: "add",
 //   name: "Mango",
